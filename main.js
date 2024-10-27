@@ -11,18 +11,37 @@ camera.position.z = 9;
 // Throttle function
 let lastWheelTime = 0
 const throttleDelay = 2000
+let scrollCount = 0
 
 function throttledWheelHandler(event){
+    
     const currentTime = Date.now();
     if (currentTime - lastWheelTime >= throttleDelay) {
+    
        lastWheelTime = currentTime;
        const direction = event.deltaY > 0 ? "down" : "up";
+
+       scrollCount = (scrollCount+1)%4
        const headings = document.querySelectorAll(".heading");
        gsap.to(headings,{
         duration: 1,
         y: `-=${100}%`,
         ease: "power1.inOut",
        })
+
+       gsap.to(spheres.rotation,{
+        duration: 1,
+        y: `-=${Math.PI/2}%`,
+        ease: "power1.inOut",
+       })
+
+       if (scrollCount === 0) {
+        gsap.to(headings,{
+            duration: 1,
+            y: `0`,
+            ease: "power1.inOut",
+        })
+       }
     }
    
 }
@@ -69,13 +88,13 @@ const bigSphere = new THREE.Mesh(bigSphereGeometry, bigSphereMaterial);
 scene.add(bigSphere);
 
 
-setInterval(() => {
-    gsap.to(spheres.rotation, {
-        y: `+=${Math.PI / 2}`,
-        duration: 2,
-        ease: 'expo.easeInOut',
-    });
-}, 5000);
+// setInterval(() => {
+//     gsap.to(spheres.rotation, {
+//         y: `+=${Math.PI / 2}`,
+//         duration: 2,
+//         ease: 'expo.easeInOut',
+//     });
+// }, 5000);
 
 
 
