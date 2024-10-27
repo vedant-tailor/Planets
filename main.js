@@ -1,19 +1,39 @@
 // Import necessary modules
 
 export default {
-    base: '/vedant-tailor/Planets', // Replace with your repository name
-    root: '',
+    base: '/vedant-tailor/Planets/',
     build: {
-      outDir: '../dist',
-      emptyOutDir: true,
-      sourcemap: true,
-      assetsDir: 'assets',
-    },
-    server: {
-      host: true
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Split Three.js and related packages into a separate chunk
+            three: ['three', 'three/examples/jsm/loaders/GLTFLoader'],
+            // Split other large vendor modules
+            vendor: ['@react-three/fiber', '@react-three/drei'],
+          },
+          // Adjust the chunk size warning limit (in kB)
+          chunkSizeWarningLimit: 1000,
+        }
+      },
+      // Split chunks by size
+      chunkSizeWarningLimit: 1000,
+      // Enable code splitting
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // Split node_modules into separate chunks
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+            // Split your models into a separate chunk
+            if (id.includes('/models/')) {
+              return 'models';
+            }
+          }
+        }
+      }
     }
   }
-
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
