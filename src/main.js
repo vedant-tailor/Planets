@@ -1,4 +1,19 @@
 // Import necessary modules
+
+export default {
+    base: '/vedant-tailor/Planets', // Replace with your repository name
+    root: 'src',
+    build: {
+      outDir: '../dist',
+      emptyOutDir: true,
+      sourcemap: true,
+      assetsDir: 'assets',
+    },
+    server: {
+      host: true
+    }
+  }
+
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
