@@ -69,7 +69,7 @@ const radius = 1.3;
 const segments = 64;
 const orbitRadius = 4.5;
 const colors = [0x0077ff, 0x00ff77, 0x7700ff, 0xff7700];
-let textures = ["./csilla/clouds.png", "./earth/map.jpg","./venus/map.jpg", "./volcanic/color.png" ];
+let textures = ["./csilla/color.png", "./earth/map.jpg","./venus/map.jpg", "./volcanic/color.png" ];
 const spheres = new THREE.Group();
 
 // Create a big sphere and put stars texture on it
@@ -96,7 +96,7 @@ scene.add(bigSphere);
 //     });
 // }, 5000);
 
-
+const sphereMesh = [];
 
 for (let i = 0; i < 4; i++) {
     
@@ -107,6 +107,7 @@ for (let i = 0; i < 4; i++) {
     const material = new THREE.MeshStandardMaterial({map: texture});
     const sphere = new THREE.Mesh(geometry, material);
 
+    sphereMesh.push(sphere)
     
     const angle = (i/4) * Math.PI * 2 ;
     sphere.position.x = Math.cos(angle) * orbitRadius;
@@ -121,12 +122,15 @@ scene.add(spheres);
 
 // Add orbit controls to allow for camera movement
 
-
+const clock = new THREE.Clock();
 
 // Create an animation loop to render the scene
 function animate() {
     requestAnimationFrame(animate);
-    
+    for (let i = 0; i < sphereMesh.length; i++) {
+        const sphere = sphereMesh[i]
+        sphere.rotation.y = clock.getElapsedTime() * 0.01;
+    }
     // Render the scene from the perspective of the camera
     renderer.render(scene, camera);
 }
