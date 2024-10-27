@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="w-full h-screen  overflow-hidden">
+    <div class="w-screen h-screen bg-transparent absolute top-0 left-0 z-[2]">
+      <nav class="w-full flex justify-between items-center py-4 px-3">
+        <h3 class="text-white text-2xl font-bold">Planets</h3>
+        <div class="flex gap-4">
+          <a href="#" class="text-lg font-semibold">Earth</a>
+          <a href="#" class="text-lg font-semibold">Venus</a>
+          <a href="#" class="text-lg font-semibold">Csilla</a>
+          <a href="#" class="text-lg font-semibold">Volcanic</a>
+        </div>
+      </nav>
+      <div class="main absolute top-[10%] left-1/2 -translate-x-1/2 text-center">
+        <div class="w-full h-[6em] md:h-[9em] overflow-hidden">
+          <h1 class="heading h-full text-white text-7xl md:text-9xl font-light tracking-tight">Earth</h1>
+          <h1 class="heading h-full text-white text-7xl md:text-9xl font-light tracking-tight">Csilla</h1>
+          <h1 class="heading h-full text-white text-7xl md:text-9xl font-light tracking-tight">Volcanic</h1>
+          <h1 class="heading h-full text-white text-7xl md:text-9xl font-light tracking-tight">Venus</h1>
+        </div>
+        <p class="text-white text-2xl font-light">Lorem ipsum dolor sit amet.</p>
+        <div class="fading-line w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent mt-4"></div>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
