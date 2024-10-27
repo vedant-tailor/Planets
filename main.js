@@ -1,6 +1,5 @@
 // Import necessary modules
-const importPath = import.meta.env.DEV ? '/node_modules/three' : '/Planets/node_modules/three';
-import * as THREE from `${importPath}/build/three.module.js`;
+import * as THREE from 'three';
 import gsap from 'gsap';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 
