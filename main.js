@@ -2,7 +2,7 @@
 
 export default {
     base: '/vedant-tailor/Planets', // Replace with your repository name
-    root: 'src',
+    root: '',
     build: {
       outDir: '../dist',
       emptyOutDir: true,
