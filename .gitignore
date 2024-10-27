@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# public files
+
+csilla
+earth
+venus
+volcanic
+hdri1.hdr
+hdri2.hdr
+ngiht.hdr
+stars.jpg
